@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marcel Cai — Engineering Notebook</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --bg-card: #181b21;
+    --border: #2a2e37;
+    --text: #e8e9ec;
+    --text-dim: #9aa0ab;
+    --accent: #5ec9b8;
+    --accent-dim: #3a8a7d;
+    --tag-bg: #20242c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    padding: 0 0 80px;
+  }
+
+  header {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 24px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  header .role {
+    color: var(--accent);
+    font-size: 1.05rem;
+    margin-top: 6px;
+    font-weight: 500;
+  }
+
+  header p.bio {
+    color: var(--text-dim);
+    max-width: 600px;
+    margin-top: 16px;
+    font-size: 0.97rem;
+  }
+
+  header .links {
+    margin-top: 18px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  header .links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: 0.15s;
+  }
+
+  header .links a:hover {
+    color: var(--accent);
+    border-color: var(--accent-dim);
+  }
+
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  .section-label {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 48px 0 16px;
+  }
+
+  .section-label:first-child {
+    margin-top: 0;
+  }
+
+  .project {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 26px 28px;
+    margin-bottom: 20px;
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .project h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .status {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+
+  .status.done { background: rgba(94,201,184,0.12); color: var(--accent); }
+  .status.progress { background: rgba(230,179,76,0.12); color: #e6b34c; }
+
+  .one-liner {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-top: 6px;
+  }
+
+  .photo-row {
+    display: flex;
+    gap: 10px;
+    margin: 18px 0;
+    overflow-x: auto;
+  }
+
+  .photo-placeholder {
+    flex: 0 0 auto;
+    width: 160px;
+    height: 120px;
+    background: var(--tag-bg);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    text-align: center;
+    padding: 8px;
+  }
+
+  .photo-row img {
+    flex: 0 0 auto;
+    height: 160px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    object-fit: cover;
+  }
+
+  .block-label {
+    color: var(--accent);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 18px;
+    margin-bottom: 4px;
+  }
+
+  .project p {
+    font-size: 0.93rem;
+    color: #cdd0d6;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+
+  .tag {
+    background: var(--tag-bg);
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  footer {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Marcel Cai</h1>
+  <div class="role">Electrical Engineering @ UNSW — Deeptech / Aerospace / Fusion</div>
+  <p class="bio">
+    Building hardware and software systems quickly, learning unfamiliar tools aggressively,
+    and discarding ideas fast when evidence says they're wrong. This is a running notebook
+    of what I'm building, not a highlight reel — failures and pivots included.
+  </p>
+  <div class="links">
+    <a href="mailto:youremail@example.com">Email</a>
+    <a href="https://linkedin.com/in/yourprofile">LinkedIn</a>
+    <a href="https://github.com/Marcel-Cai">GitHub</a>
+  </div>
+</header>
+
+<main>
+
+  <div class="section-label">Active Builds</div>
+
+  <div class="project">
+    <div class="project-header">
+      <h2>Offline Translation Device</h2>
+      <span class="status progress">In Progress</span>
+    </div>
+    <p class="one-liner">A fully offline speech translation device — no internet dependency, no lag.</p>
+
+    <div class="photo-row">
+      <div class="photo-placeholder">photo: Raspberry Pi setup</div>
+      <div class="photo-placeholder">photo: early test rig</div>
+    </div>
+
+    <div class="block-label">Problem</div>
+    <p>Repeatedly heard taxi drivers in China describe how existing online translation tools slowed conversations to a crawl — dependent on signal, laggy, and unreliable exactly when needed most.</p>
+
+    <div class="block-label">Constraints</div>
+    <p>No prior experience with embedded AI. Needs to run fully offline on low-power hardware, in real time.</p>
+
+    <div class="block-label">Approach so far</div>
+    <p>Sourced a Raspberry Pi as the compute base. Selected Whisper as the open-source speech recognition foundation. Currently teaching myself the embedded AI pipeline from scratch — breaking the problem into pieces I can validate one at a time.</p>
+
+    <div class="block-label">Status / next steps</div>
+    <p>Early build phase. Updates as the prototype takes shape.</p>
+
+    <div class="tags">
+      <span class="tag">Raspberry Pi</span>
+      <span class="tag">Whisper</span>
+      <span class="tag">Embedded AI</span>
+      <span class="tag">Self-taught</span>
+    </div>
+  </div>
+
+  <div class="section-label">Completed Projects</div>
+
+  <div class="project">
+    <div class="project-header">
+      <h2>PongPong — Mahjong Keepsake Device</h2>
+      <span class="status done">MVP Built — Parked</span>
+    </div>
+    <p class="one-liner">A mahjong tile-shaped keychain that stores and plays back friends' voices — built, tested, then deliberately shelved.</p>
+
+    <div class="photo-row">
+      <div class="photo-placeholder">photo: 3D printed enclosure</div>
+      <div class="photo-placeholder">photo: PCB</div>
+      <div class="photo-placeholder">photo: final assembly</div>
+    </div>
+
+    <div class="block-label">Problem</div>
+    <p>Inspired by nightly mahjong games during my exchange at NUS — a shared ritual that disappears when everyone scatters back to different countries and cities. Wanted to preserve it.</p>
+
+    <div class="block-label">Constraints</div>
+    <p>ESP32 with only 320KB of RAM. Needed to process and store audio files far larger than that RAM budget allowed, while keeping response logic snappy for press / hold / release interactions.</p>
+
+    <div class="block-label">Solution</div>
+    <p>Built a functioning MVP in under two weeks. Designed and 3D printed the enclosure, then built an audio processing algorithm that splits a single recording into separate "ma" / "aaah" / "jong" components, so the device responds differently depending on how the button is pressed. Used multiple pass-throughs to compress and process audio that would otherwise have exceeded the ESP32's memory limit. Used AI tools to accelerate learning unfamiliar areas — PCB design and digital audio processing — fast enough to keep pace with the build.</p>
+
+    <div class="block-label">What changed</div>
+    <p>Mentors and friends liked the product but consistently asked: <em>"Why does this need to be a startup?"</em> Rather than defending it, I treated the feedback as data. I'd validated whether I <em>could</em> build it — not whether I <em>should</em>. Parked it within a week and pivoted to the translation device above.</p>
+
+    <div class="block-label">Lesson</div>
+    <p>Speed of learning beats speed of building. Building fast only matters if you're also willing to find out fast that you're wrong.</p>
+
+    <div class="tags">
+      <span class="tag">ESP32</span>
+      <span class="tag">KiCad</span>
+      <span class="tag">3D Printing</span>
+      <span class="tag">Audio Processing</span>
+    </div>
+  </div>
+
+  <div class="section-label">Other Work</div>
+
+  <div class="project">
+    <div class="project-header">
+      <h2>AtomCraft — SOUTH Tokamak</h2>
+      <span class="status progress">Ongoing</span>
+    </div>
+    <p class="one-liner">Secretary &amp; Energy Storage Engineer at UNSW's undergraduate-run fusion initiative.</p>
+
+    <div class="photo-row">
+      <div class="photo-placeholder">photo: tokamak build</div>
+      <div class="photo-placeholder">photo: team / facility</div>
+    </div>
+
+    <div class="block-label">Focus</div>
+    <p>Energy storage systems for the SOUTH tokamak, alongside coordination and international outreach for the project.</p>
+
+    <div class="tags">
+      <span class="tag">Fusion</span>
+      <span class="tag">Energy Storage</span>
+      <span class="tag">Pulsed Power</span>
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="project-header">
+      <h2>International Space Competition — Lunar Regolith Glassification</h2>
+      <span class="status progress">Ongoing</span>
+    </div>
+    <p class="one-liner">Designing and fabricating off-axis parabolic mirror solar concentrators to glassify lunar regolith simulant.</p>
+
+    <div class="photo-row">
+      <div class="photo-placeholder">photo: concentrator design</div>
+      <div class="photo-placeholder">photo: regolith test</div>
+    </div>
+
+    <div class="block-label">Focus</div>
+    <p>Solar concentrator design and fabrication, feeding directly into longer-term interest in solar thermal propulsion systems.</p>
+
+    <div class="tags">
+      <span class="tag">Optics</span>
+      <span class="tag">Solar Concentrators</span>
+      <span class="tag">Space Systems</span>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Last updated manually — this is a living notebook, not a finished portfolio. More projects added as they happen.
+</footer>
+
+</body>
+</html>
